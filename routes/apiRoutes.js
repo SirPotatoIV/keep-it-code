@@ -1,12 +1,30 @@
 var db = require("../models");
 
 module.exports = {
-  postExampleApi: async function(req, res) {
-    const dbExample = await db.Example.create(req.body);
-    res.json(dbExample);
-  },
+  // All api routes
   api: function(app) {
-    // Get all examples
+    // Get all articles
+    app.get("/api/articles", async function(req, res) {
+      try {
+        const allArticles = await db.Articles.findAll();
+        res.json(allArticles);
+      } catch (err) {
+        console.log("Error occurred trying to get all articles: ", err);
+      }
+    });
+    // Get all subscribers
+    app.get("/api/subscribers", async function(req, res) {
+      try {
+        const allSubscribers = await db.Subscribers.findAll();
+        res.json(allSubscribers);
+      } catch (err) {
+        console.log("Error occurred trying to get all articles: ", err);
+      }
+    });
+    // Keeping code below from template as reference for now. Not part of actual project
+    //======================================
+    //
+    //
     app.get("/api/examples", function(req, res) {
       db.Example.findAll({}).then(function(dbExamples) {
         res.json(dbExamples);
@@ -35,5 +53,9 @@ module.exports = {
         res.json(dbExample);
       });
     });
+  },
+  postExampleApi: async function(req, res) {
+    const dbExample = await db.Example.create(req.body);
+    res.json(dbExample);
   }
 };
