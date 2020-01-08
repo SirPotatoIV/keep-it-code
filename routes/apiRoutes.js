@@ -6,28 +6,46 @@ module.exports = {
     // Get all articles
     app.get("/api/articles", async function(req, res) {
       try {
+        // performs a find all in the table Articles
         const allArticles = await db.Articles.findAll();
+        // returns all the found articles to the requester
         res.json(allArticles);
       } catch (err) {
         console.log("Error occurred trying to get all articles: ", err);
       }
     });
-
+    // Create a new article
     app.post("/api/articles", async function(req, res) {
-      // const {userId, title, text} = req.body;
+      // Deconscruted to better illustrate values are needed to update the table where articles are stored
+      const { userId, title, text } = req.body;
       try {
-        // const response = await db.Articles.create({user_id: userId, title: title, text: text});
-        console.log("Response from creating an article: ", req.body);
-        res.json("post recieved");
+        // Creates a new row in the table Articles with all the values for the new article
+        const response = await db.Articles.create({
+          user_id: userId,
+          title: title,
+          text: text
+        });
+        // Sends response from database back to the frontend
+        res.json(response);
       } catch (err) {
         console.log("Error ocurred creating an article: ", err);
       }
     });
-
+    // Delete an article
+    app.delete("/api/articles", async function(req, res) {
+      console.log("delete route occurred");
+      res.json("delete route recieved");
+      // const {articleId} = req.body;
+      // try {
+      //   const response = await db.Articles.delete({articleId});
+      // }
+    });
     // Get all subscribers
     app.get("/api/subscribers", async function(req, res) {
       try {
+        // performs a find all for the subscribers table
         const allSubscribers = await db.Subscribers.findAll();
+        // sends all the subscribers found to the requester.
         res.json(allSubscribers);
       } catch (err) {
         console.log("Error occurred trying to get all articles: ", err);

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const Articles = sequelize.define("Articles", {
-    users_id: {
+    user_id: {
       type: DataTypes.STRING,
       allowNull: false
     },
