@@ -14,6 +14,7 @@ module.exports = {
         console.log("Error occurred trying to get all articles: ", err);
       }
     });
+
     // Create a new article
     app.post("/api/articles", async function(req, res) {
       // Deconscruted to better illustrate values are needed to update the table where articles are stored
@@ -33,6 +34,7 @@ module.exports = {
         console.log("Error ocurred creating an article: ", err);
       }
     });
+
     // Delete an article
     app.delete("/api/articles", async function(req, res) {
       // Deconsructing req.body so it is more clear what information is needed to delete an article
@@ -42,6 +44,7 @@ module.exports = {
         const response = await db.Articles.destroy({
           where: { id: articleId }
         });
+        // sends the number of articles deleted to the requester
         res.json(`${response} article(s) deleted`);
       } catch (err) {
         console.log("Error occurred deleting an article: ", err);
