@@ -50,6 +50,7 @@ module.exports = {
         console.log("Error occurred deleting an article: ", err);
       }
     });
+
     // Get all subscribers
     app.get("/api/subscribers", async function(req, res) {
       try {
@@ -57,6 +58,26 @@ module.exports = {
         const allSubscribers = await db.Subscribers.findAll();
         // sends all the subscribers found to the requester.
         res.json(allSubscribers);
+      } catch (err) {
+        console.log("Error occurred trying to get all articles: ", err);
+      }
+    });
+
+    // Create a subscriber
+    app.post("/api/subscribers", async function(req, res) {
+      const { firstName, lastName, email } = req.body;
+      console.log(firstName, lastName, email);
+      try {
+        // performs a find all for the subscribers table
+        const response = await db.Subscribers.create({
+          first_name: firstName,
+          last_name: lastName,
+          email: email
+        });
+        // sends all the subscribers found to the requester.
+        res.json(
+          `Subscriber ${response.first_name} ${response.last_name} has been added.`
+        );
       } catch (err) {
         console.log("Error occurred trying to get all articles: ", err);
       }
