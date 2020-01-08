@@ -68,16 +68,33 @@ module.exports = {
       const { firstName, lastName, email } = req.body;
       console.log(firstName, lastName, email);
       try {
-        // performs a find all for the subscribers table
+        // creates a new subscriber in the subscriber table
         const response = await db.Subscribers.create({
           first_name: firstName,
           last_name: lastName,
           email: email
         });
-        // sends all the subscribers found to the requester.
+        // Sends the subscriber's first name and last name to the requester.
         res.json(
           `Subscriber ${response.first_name} ${response.last_name} has been added.`
         );
+      } catch (err) {
+        console.log("Error occurred trying to get all articles: ", err);
+      }
+    });
+
+    // Create a user
+    app.post("/api/users", async function(req, res) {
+      const { username, img } = req.body;
+
+      try {
+        // creates a new user in the user table
+        const response = await db.Users.create({
+          username,
+          img
+        });
+        // Sends the user's first name and last name to the requester.
+        res.json(`User ${response.username} has been added.`);
       } catch (err) {
         console.log("Error occurred trying to get all articles: ", err);
       }
