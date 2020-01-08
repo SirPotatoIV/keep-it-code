@@ -12,6 +12,18 @@ module.exports = {
         console.log("Error occurred trying to get all articles: ", err);
       }
     });
+
+    app.post("/api/articles", async function(req, res) {
+      // const {userId, title, text} = req.body;
+      try {
+        // const response = await db.Articles.create({user_id: userId, title: title, text: text});
+        console.log("Response from creating an article: ", req.body);
+        res.json("post recieved");
+      } catch (err) {
+        console.log("Error ocurred creating an article: ", err);
+      }
+    });
+
     // Get all subscribers
     app.get("/api/subscribers", async function(req, res) {
       try {
