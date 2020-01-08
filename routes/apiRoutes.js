@@ -26,19 +26,26 @@ module.exports = {
           text: text
         });
         // Sends response from database back to the frontend
-        res.json(response);
+        res.json(
+          `The article with the title: ${response.title} was created with id ${response.id}`
+        );
       } catch (err) {
         console.log("Error ocurred creating an article: ", err);
       }
     });
     // Delete an article
     app.delete("/api/articles", async function(req, res) {
-      console.log("delete route occurred");
-      res.json("delete route recieved");
-      // const {articleId} = req.body;
-      // try {
-      //   const response = await db.Articles.delete({articleId});
-      // }
+      // Deconsructing req.body so it is more clear what information is needed to delete an article
+      const { articleId } = req.body;
+      try {
+        // performs a delete in the Articles table based on the articleId
+        const response = await db.Articles.destroy({
+          where: { id: articleId }
+        });
+        res.json(`${response} article(s) deleted`);
+      } catch (err) {
+        console.log("Error occurred deleting an article: ", err);
+      }
     });
     // Get all subscribers
     app.get("/api/subscribers", async function(req, res) {
