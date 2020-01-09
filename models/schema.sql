@@ -16,5 +16,5 @@ USE blog_DB;
   
 */
 
--- DROP DATABASE IF EXISTS testdb;
--- CREATE DATABASE testdb;
+-- DROP DATABASE IF EXISTS blogdb;
+-- CREATE DATABASE blogdb;

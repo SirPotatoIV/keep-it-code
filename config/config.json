@@ -20,7 +20,7 @@
   "ci": {
     "username": "root",
     "password": "root",
-    "database": "testdb",
+    "database": "blog_db",
     "host": "127.0.0.1",
     "socketPath": "~travis/.my.cnf",
     "dialect": "mysql",
