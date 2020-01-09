@@ -14,6 +14,32 @@ module.exports = {
         console.log("Error occurred trying to get all articles: ", err);
       }
     });
+    // grabs all articles by user ID
+    app.get("/api/articles/:id", async function(req, res) {
+      const user_id = req.params.id;
+      try {
+        const articleById = await db.Articles.findAll({
+          where: {
+            user_id: user_id
+          }
+        });
+        res.json(articleById);
+      } catch (err) {
+        console.log("Error occured trying to get artile by ID: ", err);
+      }
+    });
+
+    // Get all subscribers
+    app.get("/api/subscribers", async function(req, res) {
+      try {
+        // performs a find all for the subscribers table
+        const allSubscribers = await db.Subscribers.findAll();
+        // sends all the subscribers found to the requester.
+        res.json(allSubscribers);
+      } catch (err) {
+        console.log("Error occurred trying to get all articles: ", err);
+      }
+    });
 
     // Create a new article
     app.post("/api/articles", async function(req, res) {
@@ -48,18 +74,6 @@ module.exports = {
         res.json(`${response} article(s) deleted`);
       } catch (err) {
         console.log("Error occurred deleting an article: ", err);
-      }
-    });
-
-    // Get all subscribers
-    app.get("/api/subscribers", async function(req, res) {
-      try {
-        // performs a find all for the subscribers table
-        const allSubscribers = await db.Subscribers.findAll();
-        // sends all the subscribers found to the requester.
-        res.json(allSubscribers);
-      } catch (err) {
-        console.log("Error occurred trying to get all articles: ", err);
       }
     });
 
@@ -100,7 +114,7 @@ module.exports = {
       }
     });
     // Keeping code below from template as reference for now. Not part of actual project
-    //======================================
+    //=========================================================================================================================================
     //
     //
     app.get("/api/examples", function(req, res) {
@@ -112,9 +126,9 @@ module.exports = {
     // Get an example
     app.get("/api/examples/:id", function(req, res) {
       console.log({ id: req.params.id });
-      db.Example.findAll({ where: { id: req.params.id } }).then(function(
-        dbExamples
-      ) {
+      db.Example.findAll({
+        where: { id: req.params.id }
+      }).then(function(dbExamples) {
         console.log(dbExamples);
         res.json(dbExamples[0]);
       });
@@ -125,9 +139,9 @@ module.exports = {
 
     // Delete an example by id
     app.delete("/api/examples/:id", function(req, res) {
-      db.Example.destroy({ where: { id: req.params.id } }).then(function(
-        dbExample
-      ) {
+      db.Example.destroy({
+        where: { id: req.params.id }
+      }).then(function(dbExample) {
         res.json(dbExample);
       });
     });
