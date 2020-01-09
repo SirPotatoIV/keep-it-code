@@ -1,3 +1,6 @@
+/*eslint no-undef: "error"*/
+/*eslint-env browser*/
+
 const uploadHelpEl = document.getElementById("uploadHelp");
 const usernameInputEl = document.getElementById("usernameInput");
 const articleTextEl = document.getElementById("articleText");

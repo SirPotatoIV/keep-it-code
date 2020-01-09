@@ -1,7 +1,10 @@
+/*eslint no-undef: "error"*/
+/*eslint-env browser*/
+
 //js get requests to display all articles to articles.html
 
-//js get requests to display user 1 articles to user 1 
+//js get requests to display mark articles to mark page
 
-//js get requests to display user 2 articles
+//js get requests to display aydy articles to aydy page
 
-//js get requests to display user 3 articles 
+//js get requests to display jake articles jake page
