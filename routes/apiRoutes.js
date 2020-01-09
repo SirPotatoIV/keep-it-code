@@ -14,7 +14,7 @@ module.exports = {
         console.log("Error occurred trying to get all articles: ", err);
       }
     });
-
+    // grabs all articles by user ID
     app.get("/api/articles/:id", async function(req, res) {
       const user_id = req.params.id;
       try {
