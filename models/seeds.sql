@@ -1,6 +1,6 @@
 USE blog_db;
 
-INSERT INTO articles (users_id, title, text, createdAt, updatedAt)
+INSERT INTO articles (user_id, title, text, createdAt, updatedAt)
 
 VALUES 
 (1, "Mind the Grid", "Lorem ipsum", now(), now()),
@@ -16,11 +16,11 @@ VALUES
 
 
 
-INSERT INTO users (username, password, img, createdAt, updatedAt)
+INSERT INTO users (username, img, createdAt, updatedAt)
 
 VALUES 
-("taing85", "GOD", "6789.jpeg", now(), now()),
-("codeIt", "sex", "12345.jpeg", now(), now());
+("taing85", "6789", now(), now()),
+("codeIt", "12345", now(), now());
 
 
 
