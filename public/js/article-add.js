@@ -2,8 +2,8 @@ const uploadHelpEl = document.getElementById("uploadHelp");
 const usernameInputEl = document.getElementById("usernameInput");
 const articleTextEl = document.getElementById("articleText");
 const uploadBtnEl = document.getElementById("uploadBtn");
-const uploadedImageEl = document.getElementById("uploadedImage")
-const tileInputEl = document.getElementById("titleInput")
+const uploadedImageEl = document.getElementById("uploadedImage");
+const tileInputEl = document.getElementById("titleInput");
 
 function uploadImage() {
     console.log("preview file triggered")
