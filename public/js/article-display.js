@@ -10,6 +10,7 @@ async function displayArticles() {
         let allArticlesHtml = "";
         // performs a get request to the backend, which performs a findAll request to the db
         // how to rename during deconstruction https://wesbos.com/destructuring-renaming/
+              // eslint-disable-next-line no-undef
         const { data: allArticles } = await axios.get("/api/articles")
         // Loops through all the articles in the database and creates divs for them
         for (let i = 0; i < allArticles.length; i++) {
