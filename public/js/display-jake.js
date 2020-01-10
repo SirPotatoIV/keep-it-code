@@ -9,6 +9,7 @@ async function displayJake() {
     try {
         let jakeArticlesHtml = "";
         // performs a get request to the backend, which performs a findAll request to the db
+              // eslint-disable-next-line no-undef
         const { data: jakeArticles } = await axios.get("/api/articles/ox0beoxSIHUdi24efAGVJSUncBT2")
         // Loops through mark the articles in the database and creates divs for them
         for (let i = 0; i < jakeArticles.length; i++) {

@@ -10,6 +10,7 @@ async function displayMark() {
     try {
         let markArticlesHtml = "";
         // performs a get request to the backend, which performs a findAll request to the db
+              // eslint-disable-next-line no-undef
         const { data: markArticles } = await axios.get("/api/articles/fQFWazp9rWSYdFVUjIYLoVL1hsk1")
         // Loops through mark the articles in the database and creates divs for them
         for (let i = 0; i < markArticles.length; i++) {

@@ -10,6 +10,7 @@ async function displayAydy() {
     try {
         let aydyArticlesHtml = "";
         // performs a get request to the backend, which performs a findAll request to the db
+              // eslint-disable-next-line no-undef
         const { data: aydyArticles } = await axios.get("/api/articles/XUTY95IVL5PV4AsD6dF5qq7XFyG2")
         // Loops through mark the articles in the database and creates divs for them
         for (let i = 0; i < aydyArticles.length; i++) {
