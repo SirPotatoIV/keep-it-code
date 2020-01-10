@@ -80,14 +80,14 @@ module.exports = {
 
     // Create a subscriber
     app.post("/api/subscribers", async function(req, res) {
-      const { firstName, lastName, email } = req.body;
-      console.log(firstName, lastName, email);
+      const { first_name, last_name, email } = req.body;
+      console.log(first_name, last_name, email);
       try {
         // creates a new subscriber in the subscriber table
         const response = await db.Subscribers.create({
           first_name,
           last_name,
-          email:
+          email
         });
         // Sends the subscriber's first name and last name to the requester.
         res.json(
