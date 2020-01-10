@@ -35,6 +35,7 @@ function uploadImage() {
 
 function uploadBtn() {
     uploadBtnEl.addEventListener("click", function(){
+        // eslint-disable-next-line no-restricted-globals
         event.preventDefault()
         getArticleData()
     })
@@ -56,6 +57,7 @@ async function getArticleData() {
 
     if(username && title && articleText && image){
         try {
+            // eslint-disable-next-line no-undef
             const response = await axios.post('/api/articles', 
             {
                 user_id: username, 
