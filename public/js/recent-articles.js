@@ -25,7 +25,7 @@ async function displayArticles() {
 
     for (let i = 0; i < 4; i++) {
       let x = 0;
-      const { title, text, image_string } = allArticles[x]
+      const { title, text} = allArticles[x]
 
       const articleHtml = `
       <div class="jumbotron">
