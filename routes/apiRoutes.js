@@ -9,7 +9,8 @@ module.exports = {
         // performs a find all in the table Articles
         const allArticles = await db.Articles.findAll();
         // returns all the found articles to the requester
-        res.json(allArticles);
+        const allArticlesReverse = allArticles.reverse();
+        res.json(allArticlesReverse);
       } catch (err) {
         console.log("Error occurred trying to get all articles: ", err);
       }
@@ -23,7 +24,8 @@ module.exports = {
             user_id: user_id
           }
         });
-        res.json(articleById);
+        const reverseArticleById = articleById.reverse();
+        res.json(reverseArticleById);
       } catch (err) {
         console.log("Error occured trying to get artile by ID: ", err);
       }
