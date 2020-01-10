@@ -1,8 +1,8 @@
-# keep-it-code
+/* eslint-disable */
 
-[logo]
+# Keep It Code
 
-Index:
+## Index
 I) Live site URL
 II) Description
 III) Usage
@@ -21,19 +21,32 @@ IX) Roadmap
 X) Acknowledgements
 XI) License
 
-Live site: https://keep-it-code.herokuapp.com/
+## Live Site
+https://keep-it-code.herokuapp.com/
 
-Description: Full stack project to create a blog/news site where web development boot camp students voice opinions and advice.
+## Description 
+Full stack project to create a blog/news site where web development boot camp students voice opinions and advice.
 
-Usage: The usage of this application is for 1. the general public to read about the day in the life of a new web developer (i.e struggles, successes, pearls of wisdom, etc...).
+## Usage
+The usage of this application is for 
 
-2. authorized users can log on and write/submit articles
+1. The general public to read about the day in the life of a new web developer (i.e struggles, successes, pearls of wisdom, etc...).
 
-Images: Starting layout concept (wireframes)
+2. Authorized users can log on and write/submit articles
 
-Finished view:
+## Images
+Starting layout concept (wireframes)
 
-Mobile View:
+Front-End
+![image of wire frame](./public/images/front-end-framework.jpg)
+Back-End
+![image of wire frame](./public/images/backend-framework.png)
+
+Finished View:
+![image of wire frame](./public/images/front-page-example.png)
+
+Login View:
+![image of wire frame](./public/images/logged_in_user_example.png)
 
 Installation and main Tech:
 
@@ -43,7 +56,7 @@ Installation and main Tech:
 
 CDNs used: Axios https://unpkg.com/axios/dist/axios.min.js
 
-Platforms used:
+## Platforms Used
 
 - Heroku: cloud based server for our application
 
@@ -51,45 +64,54 @@ Platforms used:
 
 - Node.js: used for scalability, modularization, vast NPM and third party libraries, etc...
 
-Frameworks used:
+## Frameworks used
 
 - Express: third party library and main server framework for node.js
 
-Databases: mySQL Workbench, JawsDB.
+## Databases 
+- MAMP 
+- JawsDB
 
-ORM: Sequelize, promise based and works well with mySQL
+## ORM 
+Sequelize, promise based and works well with mySQL
 
-Linters used:
+## Linters used
 
 - Husky: manage git hooks
 
 - ESLint: manage problematic code in JavaScript
 
-Contributions: For our group project, we had a team of four members: Jake O'Toole - Project Manager & Lead Developer, AyDy Burling - Web Developer, Claudio Garcia - Lead Designer, Mark Sirany - Web Designer.
+## Contributions 
 
-Challenges: (elaborate as you please)
+For our group project, we had a team of four members: Jake O'Toole - Project Manager & Lead Developer, AyDy Burling - Web Developer, Claudio Garcia - Lead Designer, Mark Sirany - Web Designer.
+
+## Challenges
 
 1. Server and database integration
-2. deployment
-3. img conversion, compression and storage in database - non conventional
-4. connection, routes, ports, oh my
-5. smack the server to get what and post how?
+2. Deployment on Heroku
+3. Image conversion, compression and storage in database - non conventional
+4. Connection, routes, ports, oh my
+5. Smack the server to get what and post how?
    -postman to the rescue
-6. time
+6. Time
    - where's the Eye of Agamotto when you need it?
    - five most dangerous words in the beginning dev stage "Wouldn't it be cool if...?"
-7. authentication and new tech
+7. Authentication and new tech
    - let me learn Firebase real quick
 
-Successes: Great group dynamic. Effective communication between front-end and back-end. Working application (hopefully).
+## Successes
+
+Great group dynamic. Effective communication between front-end and back-end. Working application (hopefully).
 TO BE CONTINUED...
 
-Road Ahead:
+## Road Ahead
 
-1. servers (jake- i'll need help elaborating on this about the images/CDN)
-2. database - better setup (foreign keys, joins)
-3. ability for subscribers to donate money
+1. Image Storage - Change from converting image to a string to using Firebases storage
+2. Database - better setup (foreign keys, joins)
+3. Ability for subscribers to donate money
 
-Acknowledgements: We created this code based on the project requirements by Trilogy Education Services. We have included citations in the form of comments throughout all files.
+## Acknowledgements
+We created this code based on the project requirements by Trilogy Education Services. We have included citations in the form of comments throughout all files.
 
-License: MIT
+## License
+MIT
