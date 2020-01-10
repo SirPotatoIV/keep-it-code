@@ -61,8 +61,13 @@
   <div class="container">
 <br>
     <!-- Heading Row -->
+<<<<<<< HEAD
     <div class="row align-items-center my-5">
       <div class="col-lg-12">
+=======
+    <div class="row my-5">
+      <div class="col-lg-12 mt-5">
+>>>>>>> fced18d33a411b352d47b1fe6a76a8a2191a75fb
         <form>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -75,8 +80,10 @@
             <small id="passwordHelp" class="form-text text-muted"></small>
           </div>
           <button id="logInBtn" type="submit" class="btn btn-primary">Log In</button>
-          <!-- <button id="signInBtn" type="submit" class="btn btn-primary">Log In</button> -->
+          <!-- Button only appears if the user is logged in -->
           <button id="logOutBtn" class="btn btn-primary d-none">Log Out</button>
+          <!-- Button only appears if the user is already logged in -->
+          <a href="/add" id="createArticleLink" class="badge badge-success d-none">Create a New Article</a>
         </form>
       </div>
     </div>

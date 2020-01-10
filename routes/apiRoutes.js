@@ -37,7 +37,34 @@ module.exports = {
         // sends all the subscribers found to the requester.
         res.json(allSubscribers);
       } catch (err) {
-        console.log("Error occurred trying to get all articles: ", err);
+        console.log("Error occurred trying to get all subscribers: ", err);
+      }
+    });
+
+    // Get all subscribers
+    app.get("/api/users/:uid", async function(req, res) {
+      try {
+        const sentUid = req.params.uid;
+        const uids = [];
+        // performs a find all for the subscribers table
+        const data = await db.Users.findAll({ attributes: ["uid"], raw: true });
+        // console.log(data)
+        // sends all the subscribers found to the requester.
+        for (let i = 0; i < data.length; i++) {
+          uids.push(data[i].uid);
+        }
+        console.log(uids, sentUid);
+        const checkSentUid = uids.indexOf(sentUid);
+        console.log(checkSentUid);
+        if (checkSentUid >= 0) {
+          console.log("true");
+          res.json("true");
+        } else {
+          console.log("false");
+          res.json("false");
+        }
+      } catch (err) {
+        console.log("Error occurred trying to get all users: ", err);
       }
     });
 

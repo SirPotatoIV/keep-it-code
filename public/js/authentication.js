@@ -1,8 +1,5 @@
 // Video I watched to learn about firebase authentication https://www.youtube.com/watch?v=-OKrloDzGpU
-/*eslint no-undef: "error"*/
-/*eslint-env browser*/
-
-import firebase from "firebase";
+/*global firebase*/
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5alrljLCBtksvrKyHn4z_iFESYa-ohTs",
@@ -25,10 +22,12 @@ const loginBtnEl = document.getElementById("logInBtn");
 const logoutBtnEl = document.getElementById("logOutBtn");
 const emailHelpEl = document.getElementById("emailHelp");
 const passwordHelpEl = document.getElementById("passwordHelp");
+const createArticleLinkEl = document.getElementById("createArticleLink");
 
 function login() {
   // add login event
-  loginBtnEl.addEventListener("click", async function() {
+  loginBtnEl.addEventListener("click", async function(event) {
+    event.preventDefault();
     // get email and password
     const email = emailEl.value;
     const password = passwordEl.value;
@@ -45,25 +44,6 @@ function login() {
 }
 login();
 
-// function signUp(){
-//     signUpBtnEl.addEventListener("click", async function(){
-//         event.preventDefault()
-//         // get email and password
-//         // TO DO: ADD VALIDATION THAT THE VALUES ARE ACTUALLY AN EMAIL AND PASSWORD
-//         const email = emailEl.value;
-//         const password = passwordEl.value;
-//         const auth = firebase.auth()
-//         // sign in
-//         try{
-//             await auth.createUserWithEmailAndPassword(email, password);
-//         }
-//         catch(err){
-//             console.log("issue occurred during sign up: ", err)
-//         }
-//     })
-// }
-// signUp();
-
 function authenticationState() {
   // checks if user is logged in or not
   firebase.auth().onAuthStateChanged(firebaseUser => {
@@ -71,11 +51,13 @@ function authenticationState() {
       console.log(firebaseUser);
       // makes logout button visible
       logoutBtnEl.classList.remove("d-none");
+      createArticleLinkEl.classList.remove("d-none");
       passwordHelpEl.innerText = "You are currently logged in.";
     } else {
       console.log("not logged in");
       // hides logout button visible
       logoutBtnEl.classList.add("d-none");
+      createArticleLinkEl.classList.add("d-none");
     }
   });
 }
