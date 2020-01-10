@@ -1,10 +1,10 @@
 USE blog_db;
 
-INSERT INTO articles (user_id, title, text, createdAt, updatedAt)
+INSERT INTO articles (user_id, title, text, image_string, createdAt, updatedAt)
 
 VALUES 
-(1, "Mind the Grid", "Lorem ipsum", now(), now()),
-(2, "To Sequelize or Not to Sequelize", "Lorem ipsum", now(), now());
+(1, "Mind the Grid", "Lorem ipsum", "asdfasd", now(), now()),
+(2, "To Sequelize or Not to Sequelize", "Lorem ipsum", "asdfasdf", now(), now());
 
 
 
@@ -16,11 +16,11 @@ VALUES
 
 
 
-INSERT INTO users (username, img, createdAt, updatedAt)
+INSERT INTO Users (username, uid, img, createdAt, updatedAt)
 
 VALUES 
-("taing85", "6789", now(), now()),
-("codeIt", "12345", now(), now());
+("Jake", "ox0beoxSIHUdi24efAGVJSUncBT2", "6789.jpeg", now(), now()),
+("Spiderman", "VsLNcvcDWqSxRgEOSlpr6PjAjAt1", "12345.jpeg", now(), now());
 
 
 

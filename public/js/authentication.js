@@ -1,5 +1,5 @@
 // Video I watched to learn about firebase authentication https://www.youtube.com/watch?v=-OKrloDzGpU
-/*global firebase, event*/
+/*global firebase*/
 
 const firebaseConfig = {
   apiKey: "AIzaSyD5alrljLCBtksvrKyHn4z_iFESYa-ohTs",
