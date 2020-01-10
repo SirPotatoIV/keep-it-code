@@ -9,16 +9,23 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("public"))
+// require("./routes/apiRoutes")(app);
 
 // Routes
+
+
 const API = require("./routes/apiRoutes");
 API.api(app);
+
+// require("./routes/api-routes")(app);
+
+require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
-// clearing the `testdb`
+// clearing the `blogdb`
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }

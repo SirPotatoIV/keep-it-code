@@ -14,17 +14,44 @@ module.exports = {
         console.log("Error occurred trying to get all articles: ", err);
       }
     });
+    // grabs all articles by user ID
+    app.get("/api/articles/:id", async function(req, res) {
+      const user_id = req.params.id;
+      try {
+        const articleById = await db.Articles.findAll({
+          where: {
+            user_id: user_id
+          }
+        });
+        res.json(articleById);
+      } catch (err) {
+        console.log("Error occured trying to get artile by ID: ", err);
+      }
+    });
+
+    // Get all subscribers
+    app.get("/api/subscribers", async function(req, res) {
+      try {
+        // performs a find all for the subscribers table
+        const allSubscribers = await db.Subscribers.findAll();
+        // sends all the subscribers found to the requester.
+        res.json(allSubscribers);
+      } catch (err) {
+        console.log("Error occurred trying to get all articles: ", err);
+      }
+    });
 
     // Create a new article
     app.post("/api/articles", async function(req, res) {
       // Deconscruted to better illustrate values are needed to update the table where articles are stored
-      const { userId, title, text } = req.body;
+      const { user_id, title, text, image_string } = req.body;
       try {
         // Creates a new row in the table Articles with all the values for the new article
         const response = await db.Articles.create({
-          user_id: userId,
-          title: title,
-          text: text
+          user_id,
+          title,
+          text,
+          image_string
         });
         // Sends response from database back to the frontend
         res.json(
@@ -51,28 +78,16 @@ module.exports = {
       }
     });
 
-    // Get all subscribers
-    app.get("/api/subscribers", async function(req, res) {
-      try {
-        // performs a find all for the subscribers table
-        const allSubscribers = await db.Subscribers.findAll();
-        // sends all the subscribers found to the requester.
-        res.json(allSubscribers);
-      } catch (err) {
-        console.log("Error occurred trying to get all articles: ", err);
-      }
-    });
-
     // Create a subscriber
     app.post("/api/subscribers", async function(req, res) {
-      const { firstName, lastName, email } = req.body;
-      console.log(firstName, lastName, email);
+      const { first_name, last_name, email } = req.body;
+      console.log(first_name, last_name, email);
       try {
         // creates a new subscriber in the subscriber table
         const response = await db.Subscribers.create({
-          first_name: firstName,
-          last_name: lastName,
-          email: email
+          first_name,
+          last_name,
+          email
         });
         // Sends the subscriber's first name and last name to the requester.
         res.json(
@@ -100,7 +115,7 @@ module.exports = {
       }
     });
     // Keeping code below from template as reference for now. Not part of actual project
-    //======================================
+    //=========================================================================================================================================
     //
     //
     app.get("/api/examples", function(req, res) {
@@ -112,9 +127,9 @@ module.exports = {
     // Get an example
     app.get("/api/examples/:id", function(req, res) {
       console.log({ id: req.params.id });
-      db.Example.findAll({ where: { id: req.params.id } }).then(function(
-        dbExamples
-      ) {
+      db.Example.findAll({
+        where: { id: req.params.id }
+      }).then(function(dbExamples) {
         console.log(dbExamples);
         res.json(dbExamples[0]);
       });
@@ -125,9 +140,9 @@ module.exports = {
 
     // Delete an example by id
     app.delete("/api/examples/:id", function(req, res) {
-      db.Example.destroy({ where: { id: req.params.id } }).then(function(
-        dbExample
-      ) {
+      db.Example.destroy({
+        where: { id: req.params.id }
+      }).then(function(dbExample) {
         res.json(dbExample);
       });
     });
