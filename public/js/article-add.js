@@ -1,6 +1,6 @@
+/*global firebase, event*/
 /*eslint no-undef: "error"*/
-/*eslint-env browser*/
-//const axios = require('axios');
+
 const uploadHelpEl = document.getElementById("uploadHelp");
 const usernameInputEl = document.getElementById("usernameInput");
 const articleTextEl = document.getElementById("articleText");
