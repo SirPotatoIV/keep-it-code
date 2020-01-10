@@ -43,7 +43,7 @@ async function displayArticles() {
       // increases slide counter
       slideCounter += 1;
       //article counter
-      i += 1;
+      x += 1;
     }
 
 
