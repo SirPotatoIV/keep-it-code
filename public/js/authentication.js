@@ -45,25 +45,6 @@ function login() {
 }
 login();
 
-// function signUp(){
-//     signUpBtnEl.addEventListener("click", async function(){
-//         event.preventDefault()
-//         // get email and password
-//         // TO DO: ADD VALIDATION THAT THE VALUES ARE ACTUALLY AN EMAIL AND PASSWORD
-//         const email = emailEl.value;
-//         const password = passwordEl.value;
-//         const auth = firebase.auth()
-//         // sign in
-//         try{
-//             await auth.createUserWithEmailAndPassword(email, password);
-//         }
-//         catch(err){
-//             console.log("issue occurred during sign up: ", err)
-//         }
-//     })
-// }
-// signUp();
-
 function authenticationState() {
   // checks if user is logged in or not
   firebase.auth().onAuthStateChanged(firebaseUser => {
