@@ -1,12 +1,14 @@
 /*eslint no-undef: "error"*/
 /*eslint-env browser*/
-
+//const axios = require('axios');
 const uploadHelpEl = document.getElementById("uploadHelp");
 const usernameInputEl = document.getElementById("usernameInput");
 const articleTextEl = document.getElementById("articleText");
 const uploadBtnEl = document.getElementById("uploadBtn");
 const uploadedImageEl = document.getElementById("uploadedImage");
 const tileInputEl = document.getElementById("titleInput");
+
+console.log("article-add run");
 
 function uploadImage() {
     console.log("preview file triggered")
@@ -40,10 +42,18 @@ function uploadBtn() {
 uploadBtn()
 
 async function getArticleData() {
+    console.log("get Article data")
     const username = usernameInputEl.value;
     const title = tileInputEl.value
     const articleText = articleTextEl.value;
     const image = uploadedImageEl.src;
+
+    console.log(username)
+    console.log(title)
+    console.log(articleText)
+    console.log(image)
+
+
     if(username && title && articleText && image){
         try {
             const response = await axios.post('/api/articles', 

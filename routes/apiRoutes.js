@@ -44,13 +44,14 @@ module.exports = {
     // Create a new article
     app.post("/api/articles", async function(req, res) {
       // Deconscruted to better illustrate values are needed to update the table where articles are stored
-      const { userId, title, text } = req.body;
+      const { user_id, title, text, image_string } = req.body;
       try {
         // Creates a new row in the table Articles with all the values for the new article
         const response = await db.Articles.create({
-          user_id: userId,
-          title: title,
-          text: text
+          user_id,
+          title,
+          text,
+          image_string
         });
         // Sends response from database back to the frontend
         res.json(
