@@ -5,15 +5,12 @@ const slideTwo = document.getElementById("slideTwo");
 const slideThree = document.getElementById("slideThree");
 const slideFour = document.getElementById("slideFour");
 const slideFive = document.getElementById("slideFive");
+
+//slide counter to point to correct jumbotron object while looping
 let slideCounter = 0;
-//js get requests to display all articles to articles.html
-let slideArray = [
-  { slideOne },
-  { slideTwo },
-  { slideThree },
-  { slideFour },
-  { slideFive },
-];
+
+//array of all slide elements
+let slideArray = [slideOne, slideTwo, slideThree, slideFour, slideFive];
 
 
 async function displayArticles() {
@@ -27,6 +24,7 @@ async function displayArticles() {
     // Loops through all the articles in the database and creates divs for them
 
     for (let i = allArticles.length - 5; i < allArticles.length; i++) {
+      let i = 0;
       const { title, text, image_string } = allArticles[i]
 
       const articleHtml = `
@@ -38,11 +36,14 @@ async function displayArticles() {
       <a class="btn btn-primary btn-lg" href="/articles" role="button">See More</a>
     </div>
     `
-
+      // console.log("article created"+articleHtml);
       // adds article html to all articles html
       slideArray[slideCounter].innerHTML = articleHtml;
+      console.log(slideArray[slideCounter].innerHTML);
       // increases slide counter
       slideCounter += 1;
+      //article counter
+      i += 1;
     }
 
 
