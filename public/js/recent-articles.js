@@ -23,9 +23,9 @@ async function displayArticles() {
     const { data: allArticles } = await axios.get("/api/articles")
     // Loops through all the articles in the database and creates divs for them
 
-    for (let i = allArticles.length - 5; i < allArticles.length; i++) {
-      let i = 0;
-      const { title, text, image_string } = allArticles[i]
+    for (let i = 0; i < 4; i++) {
+      let x = 0;
+      const { title, text, image_string } = allArticles[x]
 
       const articleHtml = `
       <div class="jumbotron">
