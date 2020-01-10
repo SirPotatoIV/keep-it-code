@@ -15,23 +15,14 @@ firebase.initializeApp(firebaseConfig);
 
 // Get html elements
 const uploadHelpEl = document.getElementById("uploadHelp");
-const usernameInputEl = document.getElementById("usernameInput");
 const articleTextEl = document.getElementById("articleText");
 const uploadBtnEl = document.getElementById("uploadBtn");
 const uploadedImageEl = document.getElementById("uploadedImage");
 const tileInputEl = document.getElementById("titleInput");
 
-async function authenticationState() {
-  // checks if user is logged in or not
-  try {
-    await firebase.auth().onAuthStateChanged(firebaseUser => {
-      console.log(firebaseUser);
-      return firebase;
-    });
-  } catch (err) {
-    console.log("error running authentication: ", err);
-  }
-}
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  //   console.log(firebaseUser);
+});
 
 function uploadImage() {
   console.log("preview file triggered");
@@ -64,42 +55,46 @@ function uploadBtn() {
   uploadBtnEl.addEventListener("click", async function() {
     // eslint-disable-next-line no-restricted-globals
     event.preventDefault();
-    let uid = "";
+    let uid = 1;
     let isValidUid = false;
+    const test = await firebase.auth().currentUser;
+    console.log(test);
 
     try {
-      await firebase.auth().onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
-          uid = firebaseUser.uid;
-        } else {
-          uploadHelpEl.innerText = "You are not logged in.";
-          return;
-          // do nothing
-        }
-      });
+      const currentUser = await firebase.auth().currentUser;
+      if (currentUser) {
+        console.log(currentUser);
+        uid = currentUser.uid;
+        //   console.log(uid)
+      } else {
+        uploadHelpEl.innerText = "You are not logged in.";
+        // do nothing
+      }
     } catch (err) {
       console.log(err);
     }
 
     try {
+      console.log("hello", uid);
       isValidUid = await axios.get(`/api/users/${uid}`);
+      console.log(isValidUid.data);
     } catch (err) {
       console.log("error occurred while getting users: ", err);
     }
-
-    if (isValidUid === true) {
-      getArticleData();
+    console.log(isValidUid.data);
+    if (isValidUid.data === "true") {
+      getArticleData(uid);
     } else {
       uploadHelpEl.innerText = "Not logged in, or invalid UID";
       console.log("UID does not match users");
+      return;
     }
   });
 }
 uploadBtn();
 
-async function getArticleData() {
-  console.log("get Article data");
-  const username = usernameInputEl.value;
+async function getArticleData(uid) {
+  const username = uid;
   const title = tileInputEl.value;
   const articleText = articleTextEl.value;
   const image = uploadedImageEl.src;

@@ -53,11 +53,15 @@ module.exports = {
         for (let i = 0; i < data.length; i++) {
           uids.push(data[i].uid);
         }
+        console.log(uids, sentUid);
         const checkSentUid = uids.indexOf(sentUid);
+        console.log(checkSentUid);
         if (checkSentUid >= 0) {
-          res.json(true);
+          console.log("true");
+          res.json("true");
         } else {
-          res.json(false);
+          console.log("false");
+          res.json("false");
         }
       } catch (err) {
         console.log("Error occurred trying to get all users: ", err);
