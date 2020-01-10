@@ -85,9 +85,9 @@ module.exports = {
       try {
         // creates a new subscriber in the subscriber table
         const response = await db.Subscribers.create({
-          first_name: firstName,
-          last_name: lastName,
-          email: email
+          first_name,
+          last_name,
+          email:
         });
         // Sends the subscriber's first name and last name to the requester.
         res.json(
