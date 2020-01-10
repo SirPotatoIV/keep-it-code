@@ -8,7 +8,7 @@ const slideFive = document.getElementById("slideFive");
 
 //slide counter to point to correct jumbotron object while looping
 let slideCounter = 0;
-
+let x = 0;
 //array of all slide elements
 let slideArray = [slideOne, slideTwo, slideThree, slideFour, slideFive];
 
@@ -23,8 +23,7 @@ async function displayArticles() {
     const { data: allArticles } = await axios.get("/api/articles")
     // Loops through all the articles in the database and creates divs for them
 
-    for (let i = 0; i < 4; i++) {
-      let x = 0;
+    for (let i = 0; i < 5; i++) {
       const { title, text} = allArticles[x]
 
       const articleHtml = `
