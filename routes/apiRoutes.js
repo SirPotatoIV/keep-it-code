@@ -37,20 +37,48 @@ module.exports = {
         // sends all the subscribers found to the requester.
         res.json(allSubscribers);
       } catch (err) {
-        console.log("Error occurred trying to get all articles: ", err);
+        console.log("Error occurred trying to get all subscribers: ", err);
+      }
+    });
+
+    // Get all subscribers
+    app.get("/api/users/:uid", async function(req, res) {
+      try {
+        const sentUid = req.params.uid;
+        const uids = [];
+        // performs a find all for the subscribers table
+        const data = await db.Users.findAll({ attributes: ["uid"], raw: true });
+        // console.log(data)
+        // sends all the subscribers found to the requester.
+        for (let i = 0; i < data.length; i++) {
+          uids.push(data[i].uid);
+        }
+        console.log(uids, sentUid);
+        const checkSentUid = uids.indexOf(sentUid);
+        console.log(checkSentUid);
+        if (checkSentUid >= 0) {
+          console.log("true");
+          res.json("true");
+        } else {
+          console.log("false");
+          res.json("false");
+        }
+      } catch (err) {
+        console.log("Error occurred trying to get all users: ", err);
       }
     });
 
     // Create a new article
     app.post("/api/articles", async function(req, res) {
       // Deconscruted to better illustrate values are needed to update the table where articles are stored
-      const { userId, title, text } = req.body;
+      const { user_id, title, text, image_string } = req.body;
       try {
         // Creates a new row in the table Articles with all the values for the new article
         const response = await db.Articles.create({
-          user_id: userId,
-          title: title,
-          text: text
+          user_id,
+          title,
+          text,
+          image_string
         });
         // Sends response from database back to the frontend
         res.json(
@@ -79,14 +107,14 @@ module.exports = {
 
     // Create a subscriber
     app.post("/api/subscribers", async function(req, res) {
-      const { firstName, lastName, email } = req.body;
-      console.log(firstName, lastName, email);
+      const { first_name, last_name, email } = req.body;
+      console.log(first_name, last_name, email);
       try {
         // creates a new subscriber in the subscriber table
         const response = await db.Subscribers.create({
-          first_name: firstName,
-          last_name: lastName,
-          email: email
+          first_name,
+          last_name,
+          email
         });
         // Sends the subscriber's first name and last name to the requester.
         res.json(

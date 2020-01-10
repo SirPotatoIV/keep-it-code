@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS blog_db;
 CREATE DATABASE blog_db;
 
 
-USE blog_DB;
+USE blog_db;
 
 /**
   CREATE TABLE articles
@@ -16,5 +16,5 @@ USE blog_DB;
   
 */
 
--- DROP DATABASE IF EXISTS testdb;
--- CREATE DATABASE testdb;
+-- DROP DATABASE IF EXISTS blogdb;
+-- CREATE DATABASE blogdb;

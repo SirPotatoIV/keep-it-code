@@ -11,7 +11,12 @@ module.exports = function(sequelize, DataTypes) {
     text: {
       type: DataTypes.TEXT,
       allowNull: false
+    },
+    image_string: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   });
   return Articles;
 };
+
