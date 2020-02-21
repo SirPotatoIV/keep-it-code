@@ -8,4 +8,5 @@ console.log(emailInputEl);
 
 subscribeBtnEl.addEventListener("click", function(event) {
   event.preventDefault();
+  console.log(emailInputEl.value);
 });
