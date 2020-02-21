@@ -123,7 +123,7 @@ module.exports = {
           `Subscriber ${response.first_name} ${response.last_name} has been added.`
         );
       } catch (err) {
-        console.log("Error occurred trying to get all articles: ", err);
+        console.log("Error occurred trying to add a subscriber: ", err);
       }
     });
 
