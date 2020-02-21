@@ -123,8 +123,7 @@
     
         <!--Grid column-->
         <div class="col mb-md-0">
-          <form id="contact-form" name="contact-form"
-         method="POST">
+          <form id="contact-form">
     
             <!--Grid row-->
             <div class="row">
@@ -132,12 +131,11 @@
               <!--Grid column-->
               <div class="col-md-6">
                 <div class="md-form mb-0">
-                  <input type="text" id="email" name="email" class="form-control">
+                  <input type="text" id="emailInput" name="email" class="form-control">
                   <label for="email" class="">Your email</label>
                 </div>
-                <form class="form" action="/api/contact" method="post">
-                  <button type="submit" name="button">Join</button>
-                </form>
+                
+                <button type="submit" name="button" id="subscribeBtn">Join</button>
             
               </div>
               <!--Grid column-->
